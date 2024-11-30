@@ -4,6 +4,6 @@ import './logger';
 import logger from './logger';
 
 
-app.listen('4000','0.0.0.0',()=>{
-    logger.info("server is listening on 4000 port");
+app.listen('80','0.0.0.0',()=>{
+    logger.info("server is listening on 80 port");
 })
