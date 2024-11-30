@@ -1,0 +1,3 @@
+mongodb atlas
+usuario: christiangiraldog
+clave: 5XjzpJI6QLaV1D0O

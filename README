@@ -1,0 +1,31 @@
+# Project Title
+
+Farmark
+
+---
+## Requirements
+
+For development, you will only need Node.js and a node  package, npm, installed in npm environement.
+
+## Install
+    $ packege.json or npm init
+    $ git clone 
+    $ cd Farmark
+    $ npm install
+
+## Configure db
+
+create db with the name `FarMark_test` and when you execute de app:
+
+- Model - roles;
+- Model - users;
+- Model - products;
+- Model - cookies;
+
+## Running the project
+
+    $ npm run dev
+
+## Simple build for production
+
+    $ npm run build
