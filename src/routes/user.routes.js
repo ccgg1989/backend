@@ -1,8 +1,8 @@
 import {Router} from 'express';
 const router = Router()
 
-import * as UserCtrl from "../controllers/user.controller"
-import {authJwt, verifySinup} from "../middlewares/index"
+import * as UserCtrl from "../controllers/user.controller.js"
+import {authJwt, verifySinup} from "../middlewares/index.js"
 
 
 router.get('/', UserCtrl.getUser)

@@ -1,7 +1,7 @@
 import { text } from 'express';
-import Products from '../models/products.models'
+import Products from '../models/products.models.js'
 import  Xlsx  from 'xlsx';
-import logger from '../logger';
+import logger from '../logger.js';
 //var workbook = Xlsx.readFile('/src/controllers/test.xlsx');
 //var sheet_name_list = workbook.SheetNames;
 

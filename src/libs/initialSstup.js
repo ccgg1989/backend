@@ -1,5 +1,5 @@
-import Role from "../models/role.model";
-import logger from "../logger";
+import Role from "../models/role.model.js";
+import logger from "../logger.js";
 
 export const createRoles = async() => {
     try {

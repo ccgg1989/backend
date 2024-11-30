@@ -1,9 +1,9 @@
 import Jwt from "jsonwebtoken"
-import config from "../config"
+import config from "../config.js"
 
-import User from "../models/user.model"
-import Role from "../models/role.model"
-import logger from "../logger"
+import User from "../models/user.model.js"
+import Role from "../models/role.model.js"
+import logger from "../logger.js"
 
 
 export const tokenUser = async (req, res, next) => {

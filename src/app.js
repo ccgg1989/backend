@@ -1,15 +1,15 @@
 import express from 'express';
 import morgan from 'morgan'
 import cors from 'cors';
-import logger from './logger';
-import {createRoles} from  './libs/initialSstup'
+import logger from './logger.js';
+import {createRoles} from  './libs/initialSstup.js'
 
 
-import RouterAuth from './routes/auth.routes';
-import RouterUser from './routes/user.routes';
-import RouterProducts from './routes/product.routes';
-import RouterSuggested from './routes/suggested.routes';
-import RouterCookies from './routes/cookies.routes';
+import RouterAuth from './routes/auth.routes.js';
+import RouterUser from './routes/user.routes.js';
+import RouterProducts from './routes/product.routes.js';
+import RouterSuggested from './routes/suggested.routes.js';
+import RouterCookies from './routes/cookies.routes.js';
 
 const app = express()
 

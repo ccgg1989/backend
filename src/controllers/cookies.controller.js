@@ -1,6 +1,6 @@
 import { text } from 'express';
-import Cookies from '../models/cookies.models'
-import logger from "../logger";
+import Cookies from '../models/cookies.models.js'
+import logger from "../logger.js";
 
 export const createCookies = async (req, res) => {
     console.log(req.body)

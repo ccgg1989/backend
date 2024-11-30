@@ -2,7 +2,7 @@ import {Router} from 'express';
 const router = Router()
 
 
-import  * as cookiesCtrl from "../controllers/cookies.controller"
+import  * as cookiesCtrl from "../controllers/cookies.controller.js"
 
 
 

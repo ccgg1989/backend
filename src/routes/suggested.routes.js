@@ -2,7 +2,7 @@ import {Router} from 'express';
 const router = Router()
 
 
-import  * as SuggestedCtrl from "../controllers/suggested.controller"
+import  * as SuggestedCtrl from "../controllers/suggested.controller.js"
 
 router.post('/', SuggestedCtrl.createSuggested)
 

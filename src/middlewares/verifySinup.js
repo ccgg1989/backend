@@ -1,6 +1,6 @@
-import { ROLES } from "../models/role.model";
-import User from "../models/user.model";
-import logger from "../logger";
+import { ROLES } from "../models/role.model.js";
+import User from "../models/user.model.js";
+import logger from "../logger.js";
 
 export const checkDuplicateUsernameOrEmail = async (req, res, next) => {
 

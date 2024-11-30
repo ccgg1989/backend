@@ -1,7 +1,7 @@
-import app from './app'
-import './database';
-import './logger';
-import logger from './logger';
+import app from './app.js'
+import './database.js';
+import './logger.js';
+import logger from './logger.js';
 
 
 app.listen('80','0.0.0.0',()=>{
