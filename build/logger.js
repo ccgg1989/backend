@@ -24,5 +24,4 @@ var logger = (0, _winston.createLogger)({
   }), timestamp(), customFormat),
   transports: [new _winston.transports.Console()]
 });
-var _default = logger;
-exports["default"] = _default;
+var _default = exports["default"] = logger;

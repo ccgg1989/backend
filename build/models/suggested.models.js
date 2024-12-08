@@ -7,7 +7,7 @@ exports["default"] = void 0;
 var _mongoose = require("mongoose");
 var _mongooseAutoIncrement = _interopRequireDefault(require("mongoose-auto-increment"));
 var _bcryptjs = _interopRequireDefault(require("bcryptjs"));
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "default": obj }; }
+function _interopRequireDefault(e) { return e && e.__esModule ? e : { "default": e }; }
 var suggestSchema = new _mongoose.Schema({
   idsuggested: {
     type: Number,
@@ -57,5 +57,4 @@ var suggestSchema = new _mongoose.Schema({
     model: 'Products',
     field: 'idproducts'
 });*/
-var _default = (0, _mongoose.model)('suggested', suggestSchema);
-exports["default"] = _default;
+var _default = exports["default"] = (0, _mongoose.model)('suggested', suggestSchema);

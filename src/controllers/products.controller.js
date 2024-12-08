@@ -5,59 +5,75 @@ import logger from '../logger.js';
 //var workbook = Xlsx.readFile('/src/controllers/test.xlsx');
 //var sheet_name_list = workbook.SheetNames;
 
+import multer from 'multer';
+import path from 'path';
+
+
+// Configuración de multer
+const storage = multer.diskStorage({
+    destination: (req, file, cb) => {
+        cb(null, 'uploads/'); // Carpeta donde se guardarán las imágenes
+    },
+    filename: (req, file, cb) => {
+        const uniqueSuffix = Date.now() + '-' + Math.round(Math.random() * 1E9);
+        cb(null, file.fieldname + '-' + uniqueSuffix + path.extname(file.originalname));
+    }
+});
+
+const upload = multer({
+    storage: storage,
+    fileFilter: (req, file, cb) => {
+        const fileTypes = /jpeg|jpg|png/;
+        const extName = fileTypes.test(path.extname(file.originalname).toLowerCase());
+        const mimeType = fileTypes.test(file.mimetype);
+
+        if (mimeType && extName) {
+            return cb(null, true);
+        } else {
+            cb(new Error('Only .png, .jpg and .jpeg format allowed!'));
+        }
+    }
+});
 
 export const createProducts = async (req, res) => {
+    try {
+        // Subir la imagen con multer
+        upload.single('image')(req, res, async (err) => {
+            if (err) {
+                logger.debug(err);
+                return res.status(400).json({ message: err.message });
+            }
 
-    await Products.find().sort({$natural:-1}).limit(1)
-    .then((results)=>{
-        const Data = results;
-        if(Data.length === 0){
-            const { nameproducts, descriptions, price, discount, provider, expiration_Data, stock, image, tags} = req.body;
-            const idproducts = 1;
-            const newProducts = new Products({ 
+            const imagePath = req.file ? req.file.path : null; // Ruta de la imagen subida
+            const { nameproducts, descriptions, price, discount, provider, expiration_Data, stock, tags } = req.body;
+
+            const lastProduct = await Products.find().sort({ $natural: -1 }).limit(1);
+            const idproducts = lastProduct.length > 0 ? lastProduct[0].idproducts + 1 : 1;
+
+            const newProduct = new Products({
                 idproducts,
-                nameproducts, 
+                nameproducts,
                 price,
-                descriptions, 
-                discount, 
-                provider, 
-                expiration_Data, 
-                stock, 
-                image,
-                tags,
-                        })
-            const savedProducts =  newProducts.save()
-            logger.info(savedProducts)
-            res.json('Saved The Number One Product')
+                descriptions,
+                discount,
+                provider,
+                expiration_Data,
+                stock,
+                image: imagePath,
+                tags
+            });
 
-
-        }else {
-                const { nameproducts, descriptions, price, discount, provider, expiration_Data, stock, image, tags} = req.body;
-                const value = results[0].idproducts;
-                const idproducts = value + 1;
-                const newProducts = new Products({ 
-                    idproducts,
-                    nameproducts, 
-                    price,
-                    descriptions,  
-                    discount, 
-                    provider, 
-                    expiration_Data, 
-                    stock,
-                    image, 
-                    tags,
-                            })
-                const savedProducts =  newProducts.save()
-                logger.info(savedProducts)
-                res.json('Saved New Products')
-        }
-
-    })
-    .catch((error)=>{
+            const savedProduct = await newProduct.save();
+            logger.info(savedProduct);
+            res.json({ message: 'Product created successfully', product: savedProduct });
+        });
+    } catch (error) {
         logger.debug(error);
-        res.status(400).json({message:`${error}`})
-    })
-}
+        res.status(400).json({ message: `${error}` });
+    }
+};
+
+
 export const getAllProducts = async (req, res) => {
     await Products.find({}).limit(100)
     .then((results)=>{
@@ -69,6 +85,8 @@ export const getAllProducts = async (req, res) => {
         res.status(400).json({message:`${error}`})
     })
 }
+
+
 export const getProductsByName = async (req, res) => {
     const name = req.params.nameproducts
     logger.info(name)

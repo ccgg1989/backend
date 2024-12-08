@@ -7,14 +7,14 @@ exports["default"] = void 0;
 var _express = _interopRequireDefault(require("express"));
 var _morgan = _interopRequireDefault(require("morgan"));
 var _cors = _interopRequireDefault(require("cors"));
-var _logger = _interopRequireDefault(require("./logger"));
-var _initialSstup = require("./libs/initialSstup");
-var _auth = _interopRequireDefault(require("./routes/auth.routes"));
-var _user = _interopRequireDefault(require("./routes/user.routes"));
-var _product = _interopRequireDefault(require("./routes/product.routes"));
-var _suggested = _interopRequireDefault(require("./routes/suggested.routes"));
-var _cookies = _interopRequireDefault(require("./routes/cookies.routes"));
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "default": obj }; }
+var _logger = _interopRequireDefault(require("./logger.js"));
+var _initialSstup = require("./libs/initialSstup.js");
+var _authRoutes = _interopRequireDefault(require("./routes/auth.routes.js"));
+var _userRoutes = _interopRequireDefault(require("./routes/user.routes.js"));
+var _productRoutes = _interopRequireDefault(require("./routes/product.routes.js"));
+var _suggestedRoutes = _interopRequireDefault(require("./routes/suggested.routes.js"));
+var _cookiesRoutes = _interopRequireDefault(require("./routes/cookies.routes.js"));
+function _interopRequireDefault(e) { return e && e.__esModule ? e : { "default": e }; }
 var app = (0, _express["default"])();
 app.use((0, _morgan["default"])('dev'));
 app.use(_express["default"].text());
@@ -45,10 +45,9 @@ app.get('/', function (req, res) {
     message: "The Farmark"
   });
 });
-app.use('/api/auth', _auth["default"]);
-app.use('/api/user', _user["default"]);
-app.use('/api/products', _product["default"]);
-app.use('/api/suggested', _suggested["default"]);
-app.use('/api/cookies', _cookies["default"]);
-var _default = app;
-exports["default"] = _default;
+app.use('/api/auth', _authRoutes["default"]);
+app.use('/api/user', _userRoutes["default"]);
+app.use('/api/products', _productRoutes["default"]);
+app.use('/api/suggested', _suggestedRoutes["default"]);
+app.use('/api/cookies', _cookiesRoutes["default"]);
+var _default = exports["default"] = app;
