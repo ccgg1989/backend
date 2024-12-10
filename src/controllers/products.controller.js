@@ -53,7 +53,7 @@ export const createProducts = async (req, res) => {
             const newProduct = new Products({
                 idproducts,
                 nameproducts,
-                price,
+                price: String(price),
                 descriptions,
                 discount,
                 provider,
