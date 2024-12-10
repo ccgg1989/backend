@@ -128,16 +128,20 @@ export const getProductsByDiscount = async (req, res) => {
 }
 
 export const putProductsById = async (req, res) => {
-    try{
-        const updateproduct = await Products.findOneAndUpdate({idproducts: req.params.idproducts}, req.body, {
-            new: true
-        })
+    try {
+        const updateproduct = await Products.findOneAndUpdate(
+            { idproducts: req.params.idproducts },
+            req.body,
+            { new: true } // Esto asegura que devuelve el producto actualizado
+        );
         logger.info(updateproduct);
         res.status(200).json(updateproduct);
-    }catch(error){
+    } catch (error) {
         logger.debug(error);
+        res.status(500).json({ message: "Error updating product" }); // Asegúrate de manejar errores con una respuesta
     }
-}
+};
+
 
 
 export const deleteProductsById = async (req, res) => {

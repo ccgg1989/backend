@@ -245,18 +245,22 @@ var putProductsById = exports.putProductsById = /*#__PURE__*/function () {
             idproducts: req.params.idproducts
           }, req.body, {
             "new": true
-          });
+          } // Esto asegura que devuelve el producto actualizado
+          );
         case 3:
           updateproduct = _context7.sent;
           _logger["default"].info(updateproduct);
           res.status(200).json(updateproduct);
-          _context7.next = 11;
+          _context7.next = 12;
           break;
         case 8:
           _context7.prev = 8;
           _context7.t0 = _context7["catch"](0);
           _logger["default"].debug(_context7.t0);
-        case 11:
+          res.status(500).json({
+            message: "Error updating product"
+          }); // Asegúrate de manejar errores con una respuesta
+        case 12:
         case "end":
           return _context7.stop();
       }

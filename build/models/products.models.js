@@ -22,7 +22,7 @@ var productSchema = new _mongoose.Schema({
     unique: false
   },
   price: {
-    type: Number,
+    type: String,
     unique: false
   },
   discount: {
