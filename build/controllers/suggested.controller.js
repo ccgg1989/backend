@@ -41,7 +41,7 @@ var createSuggested = exports.createSuggested = /*#__PURE__*/function () {
               var newSuggested = new _suggestedModels["default"]({
                 idsuggested: idsuggested,
                 namesuggested: namesuggested,
-                price: price,
+                price: String(price),
                 descriptions: descriptions,
                 discount: discount,
                 provider: provider,
