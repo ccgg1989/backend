@@ -22,7 +22,7 @@ var suggestSchema = new _mongoose.Schema({
     unique: false
   },
   price: {
-    type: String,
+    type: Number,
     unique: false
   },
   discount: {

@@ -350,7 +350,7 @@ var insertExcelProducts = exports.insertExcelProducts = /*#__PURE__*/function ()
               newProducts = new _productsModels["default"]({
                 idproducts: idproducts,
                 nameproducts: nameproducts,
-                price: String(price),
+                price: price,
                 descriptions: descriptions,
                 discount: discount,
                 provider: provider,
